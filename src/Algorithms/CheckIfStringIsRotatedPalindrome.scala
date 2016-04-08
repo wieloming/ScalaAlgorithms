@@ -3,7 +3,6 @@ package Algorithms
 class CheckIfStringIsRotatedPalindrome {
 
   def isRotatedPalindrome(string: String): Boolean = {
-
     def isRotatedPalindromeRec(chars: List[Char], countLeft: Int): Boolean = {
       if (countLeft <= 0) return false
       if (isPalindrome(chars)) return true
