@@ -1,22 +1,9 @@
 import Algorithms.Utils.Performance._
+import Algorithms.Utils.DataStructures._
 //Problem:
 //  Two linked lists A and B are joined on a particular
 //  node, called the point of intersection of the linked lists. Find the point of intersection, i.e. the first node after which both lists have same nodes.
 
-class Node(value: Int, val nextNode: Option[Node]) extends Iterable[Node] {
-  val t = this
-  override def toString: String = "<" + value.toString + ">"
-  override def iterator: Iterator[Node] = new Iterator[Node] {
-    var currentN: Node = t
-    var nextN = nextNode
-    override def hasNext: Boolean = nextN.isDefined
-    override def next(): Node = {
-      currentN = currentN.nextNode.get
-      nextN = currentN.nextNode
-      currentN
-    }
-  }
-}
 def solution1(list1: Node, list2: Node): Option[Node] = {
   for (n1 <- list1; n2 <- list2) {
     if (n1 == n2) return Some(n1)
