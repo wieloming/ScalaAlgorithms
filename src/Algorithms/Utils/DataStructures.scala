@@ -15,12 +15,12 @@ object DataStructures {
       }
     }
   }
-////////////////////////////////////////////////////////////////////
-  sealed case class LinkedList(head: Node2){
-    def add(int: Int)={
+  ////////////////////////////////////////////////////////////////////
+  sealed case class LinkedList(head: Node2) {
+    def add(int: Int) = {
       var curr = head
       var next = head.nextNode
-      while(next.isDefined){
+      while (next.isDefined) {
         curr = next.get
         next = curr.nextNode
       }
@@ -29,7 +29,7 @@ object DataStructures {
     override def toString: String = {
       var curr = head
       var res = head.value.toString
-      while(curr.nextNode.isDefined){
+      while (curr.nextNode.isDefined) {
         res += "->" + curr.nextNode.get.value
         curr = curr.nextNode.get
       }
@@ -37,13 +37,11 @@ object DataStructures {
     }
   }
   case object LinkedList {
-    def apply(n: Int*): LinkedList ={
+    def apply(n: Int*): LinkedList = {
       val l = LinkedList(Node2(n.head, None))
       n.tail.foreach(l.add)
       l
     }
   }
-  sealed case class Node2(value: Int,var nextNode: Option[Node2]) {
-    val t = this
-  }
+  sealed case class Node2(value: Int, var nextNode: Option[Node2])
 }
