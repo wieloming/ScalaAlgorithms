@@ -1,8 +1,6 @@
 package Algorithms
 
-case class Tree(value: Int,
-                var right: Tree = null,
-                var left: Tree = null)
+import Algorithms.Utils.DataStructures.Tree
 
 class FindClosestNumberInBinarySearchTree {
   def count(tree: Tree, number: Int): Any = {
