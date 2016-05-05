@@ -45,7 +45,7 @@ object DataStructures {
   }
   sealed case class Node2(value: Int, var nextNode: Option[Node2])
 
-  case class Tree(value: Int,
+  case class Tree(var value: Int,
                   var right: Tree = null,
                   var left: Tree = null)
 
