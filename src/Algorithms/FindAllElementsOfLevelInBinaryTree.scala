@@ -1,6 +1,6 @@
 package Algorithms
 
-import stuff.Tree
+import Utils.DataStructures._
 
 class FindAllElementsOfLevelInBinaryTree {
 

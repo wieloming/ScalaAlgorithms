@@ -1,23 +1,26 @@
 package Algorithms
 
-class PrintAllPermutationsOfAString {
+import Utils.Performance._
 
-  def count(letters: String): Unit = {
-    def count(letters: String, result: String): Unit = {
-      if (letters.length == 0) {
-        println(result)
-      } else {
-        letters.foreach { letter =>
+object PrintAllPermutationsOfAString extends App {
+
+  def count(letters: String): List[String] = {
+    def count(letters: String, result: String): List[String] = {
+      if (letters.length == 0) List.empty
+      else {
+        letters.toList.map { letter =>
           val filteredLetters = letters.filterNot(_ == letter)
-          count(filteredLetters, result + letter)
+          count(filteredLetters, result + letter).mkString
         }
       }
     }
     count(letters, "")
   }
 
-  def count2(letters: String): Unit = {
-    letters.permutations.foreach(println)
+  def count2(letters: String) = {
+    letters.permutations
   }
 
+  time(count("kdjsoaiejdka"), 1)
+  time(count2("kdjsoaiejdka"), 1)
 }

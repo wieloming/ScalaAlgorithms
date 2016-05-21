@@ -1,3 +1,4 @@
+import Algorithms.Utils.Performance._
 //Given an integer array and a number k,
 //print the maximum average subarray of size k.
 //
@@ -30,5 +31,5 @@ def solution2(array: Array[Int], k: Int) = {
   array.slice(maxInd, maxInd + k)
 }
 
-solution1(Array(11, -8, 16, -7, 24, -2, 3), 3)
-solution2(Array(11, -8, 16, -7, 24, -2, 3), 3)
+time(solution1(Array(11, -8, 16, -7, 24, -2, 3), 3), 100)
+time(solution2(Array(11, -8, 16, -7, 24, -2, 3), 3), 100)

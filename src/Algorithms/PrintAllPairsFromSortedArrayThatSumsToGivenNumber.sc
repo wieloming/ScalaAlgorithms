@@ -1,9 +1,11 @@
+import Algorithms.Utils.Performance._
+
 def printAll(list: List[Int], num: Int): List[(Int, Int)] = {
   list
-    .map(n => (n,list.find(_ + n == num)))
-    .filterNot(_._2.isEmpty)
-    .map({case (a, Some(b)) => (a, b)})
-    .filterNot(t => t._1 > t._2)
+    .flatMap(n => (n, list.find(_ + n == num)) match {
+      case (a, Some(b)) if a <= b => Some((a, b))
+      case _ => None
+    })
     .distinct
 }
 
@@ -17,5 +19,5 @@ def printAll2(list: List[Int], num: Int): List[List[Int]] = list match {
   case head :: tail if head + tail.last > num =>
     printAll2(list.init, num)
 }
-printAll(List(1, 2, 3, 4, 6, 6, 6, 9, 9, 10), 12)
-printAll2(List(1, 2, 3, 4, 6, 6, 6, 9, 9, 10), 12)
+time(printAll(List(1, 2, 3, 4, 6, 6, 6, 9, 9, 10), 12), 1000)
+time(printAll2(List(1, 2, 3, 4, 6, 6, 6, 9, 9, 10), 12), 1000)
