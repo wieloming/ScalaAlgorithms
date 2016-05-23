@@ -6,7 +6,7 @@ import Algorithms.Utils.DataStructures._
 
 def solution(tree: Tree, n1: Int, n2: Int): Option[Int] = {
   def ancestors(tree: Tree, n: Int, already: List[Int]): List[Int] = tree match {
-    case null => List()
+    case null => List.empty
     case Tree(value, _, _) if value == n => value::already
     case Tree(value, r, l) => ancestors(r, n, value::already) ++ ancestors(l, n, value::already)
   }
