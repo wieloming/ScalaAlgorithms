@@ -16,16 +16,13 @@ tree.left.right.left = new Tree(8)
 tree.right.right.left = new Tree(7)
 
 def computeDiagonalSum(tree: Tree): Map[Int, Int] = {
-  def helper(tree: Tree, currentLevel: Int, sums: mutable.Map[Int, Int]): mutable.Map[Int, Int] = {
+  type MutableMap = mutable.Map[Int, Int]
+  def helper(tree: Tree, currentLevel: Int, sums: MutableMap): mutable.Map[Int, Int] = {
     if (tree != null) {
       val map = helper(tree.left, currentLevel + 1, sums)
-
       map.update(currentLevel, map(currentLevel) + tree.value)
-
       helper(tree.right, currentLevel, map)
-    } else {
-      sums
-    }
+    } else sums
   }
   val map = mutable.Map[Int, Int]()
 
